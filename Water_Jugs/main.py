@@ -117,7 +117,7 @@ class WaterJugsSolver:
 
     def SetEndState(self, *state):
         """Set end state"""
-        self.final = tuple(state)
+        self.__final = tuple(state)
 
     def AllState(self):
         """Print all reachable states"""
@@ -139,12 +139,12 @@ class WaterJugsSolver:
                         continue
                     pour(QUEUE, cur_node, jar1, jar2)
 
-    def Solve(self, *final):
+    def Solve(self):
         """Print the steps to reach the end state, if possible"""
         QUEUE = self._queue
         EXIST = self._exist
         JARS = self._jars
-        FINAL = self.final
+        FINAL = self.__final
         while not QUEUE.empty():
             cur_node = self._queue.pop()
             cur_state = tuple(cur_node.state)
